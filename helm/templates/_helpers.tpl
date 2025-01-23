@@ -58,12 +58,11 @@ app.kubernetes.io/metrics-instance: {{ .Release.Name }}-exporter
 {{- end }}
 
 {{- if and (not .Values.postgresql.enabled) (not .Values.postgresql.external.host) -}}
-NO DATABASE: You disabled the PostgreSQL sub-chart but did not specify an external PostgreSQL host. Either deploy the PostgreSQL sub-chart by setting postgresql.enabled=true or set a value for postgresql.external.host.
+{{- fail "NO DATABASE: You disabled the PostgreSQL sub-chart but did not specify an external PostgreSQL host. Either deploy the PostgreSQL sub-chart by setting postgresql.enabled=true or set a value for postgresql.external.host." -}}
 {{- end }}
 
 {{- if and .Values.postgresql.enabled .Values.postgresql.external.host -}}
-CONFLICT: You specified to deploy the PostgreSQL sub-chart and also specified an external
-PostgreSQL instance. Only one of postgresql.enabled (deploy sub-chart) and postgresql.external.host can be set
+{{- fail "CONFLICT: You specified to deploy the PostgreSQL sub-chart and also specified an external PostgreSQL instance. Only one of postgresql.enabled (deploy sub-chart) and postgresql.external.host can be set." -}}
 {{- end }}
 
 {{/*
