@@ -5,7 +5,7 @@ metadata:
   namespace: {{ default .Release.Namespace .Values.namespaceOverride | quote }}
   labels:
     {{- include "cvms.labels" . | nindent 4 }}
-    {{- with .Values.cvmsConfig.exteraLabels }}
+    {{- with .Values.cvmsConfig.extraLabels }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
 {{- if .Values.cvmsConfig.annotations }}

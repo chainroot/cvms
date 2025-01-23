@@ -65,6 +65,16 @@ app.kubernetes.io/metrics-instance: {{ .Release.Name }}-exporter
 {{- fail "CONFLICT: You specified to deploy the PostgreSQL sub-chart and also specified an external PostgreSQL instance. Only one of postgresql.enabled (deploy sub-chart) and postgresql.external.host can be set." -}}
 {{- end }}
 
+{{- if .Values.customChainsConfig.enabled -}}
+{{- if not .Values.customChainsConfig.name -}}
+{{- fail "A name is required for customChainsConfig when enabled" -}}
+{{- end }}
+{{- end }}
+
+{{- if not .Values.cvmsConfig.name }}
+{{- fail "A name is required for cvmsConfig" }}
+{{- end }}
+
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).

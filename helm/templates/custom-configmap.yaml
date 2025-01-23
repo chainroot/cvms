@@ -6,7 +6,7 @@ metadata:
   namespace: {{ default .Release.Namespace .Values.namespaceOverride | quote }}
   labels:
     {{- include "cvms.labels" . | nindent 4 }}
-    {{- with .Values.customChainsConfig.exteraLabels }}
+    {{- with .Values.customChainsConfig.extraLabels }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
 {{- if .Values.customChainsConfig.annotations }}

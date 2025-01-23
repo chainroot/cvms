@@ -42,7 +42,6 @@ spec:
           {{- end }}
       {{- end }}
       {{- end }}
-      restartPolicy: {{ .Values.indexer.restartPolicy }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}

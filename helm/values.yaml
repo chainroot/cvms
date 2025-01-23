@@ -16,12 +16,12 @@ customChainsConfig:
   enabled: false
   name: "custom-chains-cm"
   annotations: {}
-  exteraLabels: {}
+  extraLabels: {}
 
 cvmsConfig:
   name: "cvms-cm"
   annotations: {}
-  exteraLabels: {}
+  extraLabels: {}
   # NOTE: Customize this variables by your needs
   # 1. network mode:
   #   ex) monikers: ['all']
@@ -66,8 +66,6 @@ indexer:
     - "4"
     - --port=9300
 
-  restartPolicy: Always
-
   env:
     DB_RETENTION_PERIOD: 1h
 
@@ -92,7 +90,7 @@ indexer:
       fsGroup: 2000
 
   securityContext:
-    enabled: false
+    enabled: true
     yamlSyntax:
       capabilities:
         drop:
@@ -106,7 +104,7 @@ indexer:
     port: 9300
 
   resources:
-    enabled: false
+    enabled: true
     yamlSyntax:
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
@@ -248,8 +246,6 @@ exporter:
     - "4"
     - --port=9200
 
-  restartPolicy: Always
-
   env: {}
     # DB_HOST: localhost
     # DB_PORT: "5432"
@@ -275,7 +271,7 @@ exporter:
       fsGroup: 2000
 
   securityContext:
-    enabled: false
+    enabled: true
     yamlSyntax:
       capabilities:
         drop:
@@ -289,7 +285,7 @@ exporter:
     port: 9200
 
   resources:
-    enabled: false
+    enabled: true
     yamlSyntax:
       # We usually recommend not to specify default resources and to leave this as a conscious
       # choice for the user. This also increases chances charts run on environments with little
