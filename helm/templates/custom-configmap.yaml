@@ -14,6 +14,7 @@ metadata:
 {{ toYaml .Values.customChainsConfig.annotations | indent 4 }}
 {{- end }}
 data:
-{{ toYaml (default dict .Values.customChainsConfig.data) | indent 2 }}
+  custom_chains.yaml.example: |
+{{- .Files.Get "files/custom_chains.yaml.example" | nindent 4 }}
 {{- end }}
 
