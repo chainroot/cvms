@@ -13,6 +13,7 @@ groups:
 
       - alert: LastestBlockTimeDiffOver300s
         expr: (time() - cvms_block_timestamp) > 300
+        for: 2m
         labels:
           severity: critical
         annotations:

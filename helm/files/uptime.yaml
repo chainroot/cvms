@@ -26,4 +26,4 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: The Validator's is missing too many! Check your validator in {{ $labels.chain }}-{{ $labels.chain_id }} network
+          summary: The Validator is missing too many blocks! Check your validator in {{ $labels.chain }}-{{ $labels.chain_id }} network

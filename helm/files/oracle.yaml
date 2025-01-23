@@ -16,7 +16,11 @@ groups:
               / on (chain_id) group_left ()
             cvms_oracle_vote_window
           ) < 0.5
+        for: 5m
         labels:
           severity: critical
         annotations:
           summary: The Validator's Oracle vote rate is too low for the {{ $labels.chain }}-{{ $labels.chain_id }} network
+          description: |
+            Oracle vote rate has dropped below 50%, indicating severe issues with the validator's participation.
+            Current vote rate: {{ $value | humanizePercentage }}

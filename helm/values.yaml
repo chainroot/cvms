@@ -387,6 +387,7 @@ exporter:
     annotations: {}
     #  Prometheus rules
     #  Some examples from https://github.com/cosmostation/cvms/tree/release/docker/prometheus/rules
+    #  View alert rules at helm/files
     prometheusRule:
       enabled: false
       additionalLabels: {}
@@ -395,7 +396,7 @@ exporter:
       ruleSets:
         - name: axelar-evm
           enabled: true
-        - name: balance
+        - name: balance # change addresses of balance rules
           enabled: true
         - name: block
           enabled: true
