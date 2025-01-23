@@ -118,17 +118,17 @@ indexer:
         memory: 128Mi
 
   livenessProbe:
-    enabled: false
+    enabled: true
     yamlSyntax:
       httpGet:
-        path: /
-        port: http
+        path: /metrics
+        port: metrics
   readinessProbe:
-    enabled: false
+    enabled: true
     yamlSyntax:
       httpGet:
-        path: /
-        port: http
+        path: /metrics
+        port: metrics
 
   # Additional volumes on the output Deployment definition and also mounting configmap.
   volumes:
@@ -299,17 +299,17 @@ exporter:
         memory: 128Mi
 
   livenessProbe:
-    enabled: false
+    enabled: true
     yamlSyntax:
       httpGet:
-        path: /
-        port: http
+        path: /metrics
+        port: metrics
   readinessProbe:
-    enabled: false
+    enabled: true
     yamlSyntax:
       httpGet:
-        path: /
-        port: http
+        path: /metrics
+        port: metrics
 
   # Additional volumes on the output Deployment definition and also mounting configmap.
   volumes:

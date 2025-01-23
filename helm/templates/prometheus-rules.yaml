@@ -19,15 +19,25 @@ metadata:
   namespace: {{ coalesce .Values.exporter.serviceMonitor.prometheusRule.namespace .Values.exporter.serviceMonitor.namespace .Release.Namespace | quote }}
 spec:
   groups:
-  {{- $files := .Files }}
-  {{- range .Values.exporter.serviceMonitor.prometheusRule.ruleSets }}
-    {{- if .enabled }}
-      {{- $filePath := printf "files/%s.yaml" .name }}
-      {{- $files.Get $filePath | nindent 4 }}
+{{- $files := .Files }}
+{{- range .Values.exporter.serviceMonitor.prometheusRule.ruleSets }}
+  {{- if .enabled }}
+    {{- $filePath := printf "files/%s.yaml" .name }}
+    {{- $fileContent := $files.Get $filePath | default "" }}
+    {{- if $fileContent }}
+      {{- $parsedYaml := fromYaml $fileContent }}
+      {{- range $parsedYaml.groups }}
+    - name: {{ .name }}
+      rules:
+      {{- toYaml .rules | nindent 8 }}
+      {{- end }}
+    {{- else }}
+      {{ printf "Warning: File %s not found or empty" $filePath | nindent 4 }}
     {{- end }}
   {{- end }}
+{{- end }}
   {{- if .Values.exporter.serviceMonitor.prometheusRule.rules }}
     - name: {{ include "cvms.fullname" . }}
-      rules: {{- toYaml .Values.exporter.serviceMonitor.prometheusRule.rules | nindent 6 }}
+      rules: {{- toYaml .Values.exporter.serviceMonitor.prometheusRule.rules | nindent 8 }}
   {{- end }}
 {{- end }}
