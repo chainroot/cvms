@@ -9,12 +9,11 @@ metadata:
     {{- with .Values.customChainsConfig.extraLabels }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
-{{- if .Values.customChainsConfig.annotations }}
+  {{- if .Values.customChainsConfig.annotations }}
   annotations:
-{{ toYaml .Values.customChainsConfig.annotations | indent 4 }}
-{{- end }}
+    {{ toYaml .Values.customChainsConfig.annotations | indent 4 }}
+  {{- end }}
 data:
   custom_chains.yaml.example: |
-{{- .Files.Get "files/custom_chains.yaml.example" | nindent 4 }}
+    {{- .Files.Get "files/custom_chains.yaml.example" | nindent 4 }}
 {{- end }}
-

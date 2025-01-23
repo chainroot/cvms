@@ -1,6 +1,6 @@
 apiVersion: v2
 name: cvms
-description: A Helm chart for Kubernetes
+description: The Cosmos Validator Monitoring Service (CVMS) is an integrated monitoring system for validators within the Cosmos app chain ecosystem
 
 # A chart can be either an 'application' or a 'library' chart.
 #
