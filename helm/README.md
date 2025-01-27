@@ -1,6 +1,6 @@
 # CVMS Helm Chart
 
-This Helm chart is used to deploy the CVMS (Cloud Virtual Management Service) application.
+The Cosmos Validator Monitoring Service (CVMS) is an integrated monitoring system for validators within the Cosmos app chain ecosystem. This helm chart is fot installing cvms on kubernetes.
 
 ## Prerequisites
 
