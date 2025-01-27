@@ -27,6 +27,8 @@ helm uninstall my-release
 
 The following table lists the configurable parameters of the CVMS chart and their default values.
 
+**Note**: You must provide cvmsConfig.monikers and cvmsConfig.chains for monitoring Cosmos validators with cvms, checkout the example in https://github.com/cosmostation/cvms/blob/release/docs/setup.md
+
 | Parameter                | Description                           | Default                        |
 |--------------------------|---------------------------------------|--------------------------------|
 | `imagePullSecrets`       | Image pull secrets                    | `[]`                           |
